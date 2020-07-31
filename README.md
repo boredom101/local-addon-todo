@@ -21,8 +21,6 @@ Clone the repository into the following directory depending on your platform:
 ### Folder Structure
 All files in `/src` will be transpiled to `/lib` using [TypeScript](http://www.typescriptlang.org/). Anything in `/lib` will be overwritten.
 
-## License
-
 ## Usage
 
 The keywords for todo actions are as follows:
@@ -32,5 +30,7 @@ The keywords for todo actions are as follows:
 
 Append a question mark at the end of the line to confirm before doing the action.
 Example: `change php version to 7.3.5 ?`
+
+## License
 
 MIT
