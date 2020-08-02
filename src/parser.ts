@@ -23,7 +23,7 @@ export default function parse(text: string): Result {
     var isValid = true;
     var words: string[] = [];
     var lower = text.toLowerCase();
-    var item = searchFor(lower.split(" "), ["rename", "inspect", "change"]);
+    var item = searchFor(lower.split(/[\.,\?! \t]/), ["rename", "inspect", "change"]);
     if (item == "_unknown") {
         isValid = false;
     }
@@ -36,7 +36,7 @@ export default function parse(text: string): Result {
         }
         argument = {"newOne": name};
     } else if (item == "change") {
-        var comp = searchFor(lower.split(" "), ["php", "sql"]);
+        var comp = searchFor(lower.split(/[\.,\?!] \t/), ["php", "sql"]);
         var newOne = lower.match(/[0-9]+\.[0-9]+\.[0-9]+/)[0];
         if (comp == "_unknown" || newOne.length == 0) {
             isValid = false;
