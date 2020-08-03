@@ -36,7 +36,7 @@ export default function parse(text: string): Result {
         }
         argument = {"newOne": name};
     } else if (item == "change") {
-        var comp = searchFor(lower.split(/[\.,\?!] \t/), ["php", "sql"]);
+        var comp = searchFor(lower.split(/[\.,\?! \t]/), ["php", "sql"]);
         var newOne = lower.match(/[0-9]+\.[0-9]+\.[0-9]+/)[0];
         if (comp == "_unknown" || newOne.length == 0) {
             isValid = false;
