@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     InnerPaneSidebarContentItem,
-    TextButton,
+    PrimaryButton,
+    Button,
     Markdown
 } from '@getflywheel/local-components';
 import parse from './parser';
@@ -43,8 +44,8 @@ export default class Task extends Component {
     render() {
         return <InnerPaneSidebarContentItem>
             <Markdown src={this.state.data.markdown}></Markdown>
-            <TextButton onClick={this.clicked} disabled={!this.state.data.valid} size="tiny">Run {this.state.again}</TextButton>
-            <TextButton onClick={this.props.delete} size="tiny">Delete</TextButton>
+            <PrimaryButton onClick={this.clicked} disabled={!this.state.data.valid}>Run {this.state.again}</PrimaryButton>
+            <Button onClick={this.props.delete}>Delete</Button>
         </InnerPaneSidebarContentItem>;
     }
 }
