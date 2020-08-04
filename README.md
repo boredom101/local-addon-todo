@@ -31,6 +31,16 @@ The keywords for todo actions are as follows:
 Append a question mark at the end of the line to confirm before doing the action.
 Example: `change php version to 7.3.5 ?`
 
+## Screenshots
+
+### A List of Tasks
+
+![Screenshot 1](screenshot-1.png)
+
+### Confirmation
+
+![Screenshot 2](screenshot-2.png)
+
 ## License
 
 MIT
