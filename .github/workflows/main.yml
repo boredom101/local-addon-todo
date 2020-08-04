@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: package
+    
+    - name: Setup Environment
+      uses: actions/setup-node@v2.1.1
+      with:
+        node-version: 12.18.3
+    
+    - name: Install Dependencies
+      run: cd package && yarn install
+    
+    - name: Transpile Code
+      run: cd package && yarn build
+    
+    - name: Create .tar.gz File
+      run: tar -czvf package.tar.gz package
+    
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Package
+        path: package.tar.gz
