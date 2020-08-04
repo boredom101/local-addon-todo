@@ -2,6 +2,8 @@ name: CI
 
 on:
   workflow_dispatch:
+  push:
+    tags: '*'
 
 
 jobs:
@@ -28,8 +30,25 @@ jobs:
     - name: Create .tar.gz File
       run: tar -czvf package.tar.gz package
     
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: Package
-        path: package.tar.gz
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+        body: |
+          New Release
+    
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./package.tar.gz
+        asset_name: package.tar.gz
+        asset_content_type: application/gzip
