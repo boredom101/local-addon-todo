@@ -1,7 +1,7 @@
 {
 	"name": "local-addon-todo",
 	"productName": "Todo",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Yisroel Newmark",
 	"keywords": [
 		"local-addon"
