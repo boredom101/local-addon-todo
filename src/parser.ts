@@ -25,6 +25,7 @@ export default function parse(text: string): Result {
     var words: string[] = [];
     var lower = text.toLowerCase();
     var item = searchFor(lower.split(/[\.,\?! \t]/), ["rename", "inspect", "change"]);
+    const validVersions = ['7.3.5', '7.4.1', '5.6.39'];
     if (item == "_unknown") {
         isValid = false;
     }
@@ -37,14 +38,16 @@ export default function parse(text: string): Result {
         }
         argument = {"newOne": name};
     } else if (item == "change") {
-        comp = searchFor(lower.split(/[\.,\?! \t]/), ["php", "sql"]);
-        var newOne = lower.match(/[0-9]+\.[0-9]+\.[0-9]+/)[0];
-        if (comp == "_unknown" || newOne.length == 0) {
+        comp = searchFor(lower.split(/[\.,\?! \t]/), ["php"]);
+        var newOne = lower.match(/[0-9]+\.[0-9]+\.[0-9]+/);
+        if (comp == "_unknown" || ! newOne || ! validVersions.includes(newOne[0])) {
             isValid = false;
         }
-        argument = {
-            "component": comp,
-            "newOne": newOne
+        if (isValid) {
+            argument = {
+                "component": comp,
+                "newOne": newOne[0]
+            }
         }
     } else {
         argument = null;
