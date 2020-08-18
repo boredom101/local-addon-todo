@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     InnerPaneSidebar,
     InnerPaneSidebarHeader,
-    InnerPaneSidebarAddNew,
     InnerPaneSidebarContent
 } from '@getflywheel/local-components';
 import { confirm } from '@getflywheel/local/renderer';
