@@ -1,5 +1,10 @@
 # Local Add-on: Todo
 
+## Description
+
+A todo list that parses a few simple commands.
+
+
 ## Manual Installation
 
 ### Clone
@@ -23,13 +28,13 @@ All files in `/src` will be transpiled to `/lib` using [TypeScript](http://www.t
 
 ## Usage
 
-The keywords for todo actions are as follows:
+Here are the available keywords to activate commands:
 - rename: renames the site using the contents of the single quotes (ex. `rename site to 'New Name'`)
 - inspect: opens the site in the browser
 - change: change a component's (at the moment only PHP) version (ex. `change version of php to 7.4.1`)
 
 Append a question mark at the end of the line to confirm before doing the action.
-Example: `change php version to 7.3.5 ?`
+Example: `change php version to 7.3.5?`
 
 ## Screenshots
 
