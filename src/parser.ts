@@ -31,7 +31,7 @@ export default function parse(text: string): Result {
     var argument : null | ChangeArg;
     if (item == "rename") {
         var start = text.indexOf("'");
-        var name = text.substring(start+1, text.indexOf("'", start+1)-1);
+        var name = text.substring(start+1, text.indexOf("'", start+1));
         if (name.length === 0) {
             isValid = false
         }
